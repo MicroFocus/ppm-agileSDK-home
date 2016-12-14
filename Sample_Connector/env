@@ -1,0 +1,24 @@
+#!/bin/sh
+#
+####################################################
+# JAVA & ANT Environment Script
+####################################################
+
+####################################################
+#   Java Root.
+####################################################
+ITG_JROOT=`pwd`
+
+ITG_ROOT=${ITG_JROOT}/../..
+####################################################
+#   ANT Related Environment.
+####################################################
+ANT_ARGS="-lib $ITG_JROOT/lib/itg_additions"
+ANT_OPTS="-Xmx520m -Dfile.encoding=UTF-8"
+CLASSPATH=$CLASSPATH;/builds/Build-Tools/checkstyle-4.4/checkstyle-all-4.4.jar
+JDK_LIB_DIR=$ITG_ROOT/Utilities/jdk7
+JDK_LIB=$JDK_LIB_DIR/rt.jar:$JDK_LIB_DIR/tools.jar
+SOURCE=1.7
+TARGET=1.7
+
+export ITG_JROOT ITG_ROOT ANT_ARGS ANT_OPTS CLASSPATH
