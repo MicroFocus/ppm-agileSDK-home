@@ -50,7 +50,7 @@
     </target>
 
     <target name="jar-cls" depends="compile">
-        <jar jarfile="${CONNECTOR_DIR}/bin/connector-${CONNECTOR_DIR}.jar" compress="true">
+        <jar jarfile="${CONNECTOR_DIR}/bin/connector-${BUNDLE_NAME}.jar" compress="true">
             <fileset dir="${CONNECTOR_DIR}/bin/classes" />
         </jar>
     </target>
@@ -58,7 +58,7 @@
     <target name="quick-deploy" depends="jar-cls">
         <echo>Only for Connector Developers - Now copying connector Jar to PPM Server.</echo>
         <copy todir="${ppm.server.root}/deploy/itg.war/WEB-INF/lib" flatten="false">
-            <fileset dir="${CONNECTOR_DIR}/bin" includes="connector-${CONNECTOR_DIR}.jar" />
+            <fileset dir="${CONNECTOR_DIR}/bin" includes="connector-${BUNDLE_NAME}.jar" />
         </copy>
 
         <copy todir="${ppm.server.root}/deploy/itg.war/" flatten="false">
@@ -74,7 +74,7 @@
         </copy>
 
         <mkdir dir="${CONNECTOR_DIR}/bin/fs_war/WEB-INF/lib" />
-        <copy file="${CONNECTOR_DIR}/bin/connector-${CONNECTOR_DIR}.jar" tofile="${CONNECTOR_DIR}/bin/fs_war/WEB-INF/lib/connector-${CONNECTOR_DIR}.jar" overwrite="true" />
+        <copy file="${CONNECTOR_DIR}/bin/connector-${BUNDLE_NAME}.jar" tofile="${CONNECTOR_DIR}/bin/fs_war/WEB-INF/lib/connector-${BUNDLE_NAME}.jar" overwrite="true" />
 
         <zip zipfile="${CONNECTOR_DIR}/bin/fs_war.jar" compress="true">
             <fileset dir="${CONNECTOR_DIR}/bin/fs_war" />
