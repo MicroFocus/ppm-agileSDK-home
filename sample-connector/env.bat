@@ -2,7 +2,7 @@
 
 REM ####################################################
 REM
-REM       PPM Agile SDK Sample Connector 
+REM          PPM Agile SDK Connector 
 REM          Build & Bundle packaging
 REM
 REM ####################################################
@@ -10,9 +10,7 @@ REM ####################################################
 REM ####################################################
 REM    PPM Root
 REM ####################################################
-rem set PPM_SERVER_ROOT=C:\PPM_HOME\server\kintana
-set PPM_SERVER_ROOT=C:\mas\SourceCode\java\target\jboss\server\kintana
-rem set JDK_LIB_DIR=C:\Java\jdk7\jre\lib
+set PPM_SERVER_ROOT=C:\PPM_HOME\server\kintana
 set JDK_LIB_DIR=C:\Java\jdk8\jre\lib
 
 
