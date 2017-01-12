@@ -1,4 +1,5 @@
-com.hp.ppm.integration
-com.hp.ppm.integration.pm
-com.hp.ppm.integration.provider
-com.hp.ppm.integration.ui
+com.ppm.integration.agilesdk
+com.ppm.integration.agilesdk.pm
+com.ppm.integration.agilesdk.provider
+com.ppm.integration.agilesdk.tm
+com.ppm.integration.agilesdk.ui
