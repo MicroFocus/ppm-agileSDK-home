@@ -1,13 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ page import="com.hp.ppm.integration.ValueSet
-                ,com.hp.ppm.integration.sass.agm.AgmConstants
-                ,com.hp.ppm.integration.sass.agm.client.FieldQuery
-                ,com.hp.ppm.integration.sass.agm.client.GraphClient
-                ,com.hp.ppm.integration.sass.agm.client.ValueQuery
-                ,com.hp.ppm.integration.sass.agm.model.jaxb.GraphResult
-                ,com.hp.ppm.integration.sdk.JsonUtils" %>
+<%@ page import="com.hp.ppm.integration.sdk.JsonUtils" %>
+<%@ page import="com.ppm.integration.agilesdk.ValueSet" %>
+<%@ page import="com.ppm.integration.agilesdk.pm.JspConstants" %>
+<%@ page import="com.ppm.integration.agilesdk.connector.agm.AgmConstants" %>
 
 <%@ include file="/integrationcenter/sdk/include-workplan-integration.jsp" %>
 <%
