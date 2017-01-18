@@ -1,34 +1,35 @@
 package com.ppm.integration.agilesdk.connector.sample;
 
+import com.ppm.integration.agilesdk.ValueSet;
+import com.ppm.integration.agilesdk.ui.DynamicDropdown;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import com.hp.ppm.integration.ValueSet;
-import com.hp.ppm.integration.ui.DynamicalDropdown;
 
-public abstract class SampleEntityDropdown extends DynamicalDropdown {
-	public SampleEntityDropdown(String name, String labelKey, String display,
-			boolean isRequired) {
-		super(name, labelKey, display, isRequired);
-	}
+public abstract class SampleEntityDropdown extends DynamicDropdown {
+    public SampleEntityDropdown(String name, String labelKey, String display,
+            boolean isRequired) {
+        super(name, labelKey, display, isRequired);
+    }
 
-	public SampleEntityDropdown(String name, String labelKey, boolean isRequired) {
-		super(name, labelKey, null, isRequired);
-	}
+    public SampleEntityDropdown(String name, String labelKey, boolean isRequired) {
+        super(name, labelKey, null, isRequired);
+    }
 
-	public abstract List<String> getDependencies();
+    public abstract List<String> getDependencies();
 
-	public abstract List<DynamicalDropdown.Option> fetchDynamicalOptions(
-			ValueSet paramValueSet);
+    public abstract List<DynamicDropdown.Option> fetchDynamicalOptions(
+            ValueSet paramValueSet);
 
-	public List<DynamicalDropdown.Option> getDynamicalOptions(ValueSet values) {
-		try {
-			return fetchDynamicalOptions(values);
-		} catch (Throwable e) {
-			//
-		}
-		return new ArrayList(0);
-	}
-	
+    public List<DynamicDropdown.Option> getDynamicalOptions(ValueSet values) {
+        try {
+            return fetchDynamicalOptions(values);
+        } catch (Throwable e) {
+            //
+        }
+        return new ArrayList(0);
+    }
+
 
 }
