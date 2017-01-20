@@ -11,7 +11,7 @@ REM ####################################################
 REM    PPM Root
 REM ####################################################
 set PPM_SERVER_ROOT=C:\PPM_HOME\server\kintana
-set JDK_LIB_DIR=C:\Java\jdk8\jre\lib
+set JDK_LIB_DIR=C:\Java\jdk7\jre\lib
 
 
 REM ####################################################
