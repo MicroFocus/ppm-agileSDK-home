@@ -28,7 +28,7 @@ public abstract class SampleEntityDropdown extends DynamicDropdown {
         } catch (Throwable e) {
             //
         }
-        return new ArrayList(0);
+        return new ArrayList<DynamicDropdown.Option>(0);
     }
 
 
