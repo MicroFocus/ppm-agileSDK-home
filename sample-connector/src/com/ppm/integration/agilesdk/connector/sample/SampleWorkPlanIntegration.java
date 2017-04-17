@@ -1,11 +1,13 @@
 package com.ppm.integration.agilesdk.connector.sample;
 
+import java.lang.RuntimeException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+
 
 import com.ppm.integration.agilesdk.*;
 import com.ppm.integration.agilesdk.pm.*;
@@ -151,10 +153,8 @@ public class SampleWorkPlanIntegration extends WorkPlanIntegration{
 
             });
         } catch (ParseException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            throw new RuntimeException("Error while parsing date", e);
         }
-        return null;
     }
 
 
@@ -187,7 +187,6 @@ public class SampleWorkPlanIntegration extends WorkPlanIntegration{
         smpData2.AddDataToFieldDict("name","Sample Task " + 3002);
         final SampleExternalTask workPlan2=new SampleExternalTask(smpData2,statue2);
 
-        //
         return new ExternalWorkPlan(){
 
             @Override
