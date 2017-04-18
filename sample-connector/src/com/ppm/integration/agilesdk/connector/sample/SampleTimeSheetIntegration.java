@@ -48,7 +48,7 @@ public class SampleTimeSheetIntegration extends TimeSheetIntegration {
         String errorMessage = null;
         Date startDate;
         Date finishDate;
-        Hashtable<String, Long> effortList = new Hashtable<>();
+        Map<String, Long> effortList = new HashMap<>();
 
         public SampleExternalWorkItem(String Name,long TotalEffort,
                 String ErrorMessage,Date startDate,Date finishDate) {
