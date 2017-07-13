@@ -3,6 +3,7 @@ package com.ppm.integration.agilesdk.connector.sample;
 import com.hp.ppm.pfm.model.Kpi;
 import com.ppm.integration.agilesdk.ValueSet;
 import com.ppm.integration.agilesdk.kpi.KpiImportIntegration;
+import com.ppm.integration.agilesdk.provider.Providers;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,7 +21,7 @@ public class SampleKpiImportIntegration extends KpiImportIntegration {
         Map<Long, Double> kpisToImport = new HashMap<Long, Double>();
 
         // You need the KPI IDs but you'll usually know a KPI by name. Use #getKpiByName() in order to retrieve the Kpi object and get the ID.
-        Kpi sampleKpi = getKpiByName("Sample KPI");
+        Kpi sampleKpi = Providers.getKpiProvider().getKpiByName("Sample KPI");
 
         if (sampleKpi != null) {
             kpisToImport.put(sampleKpi.getId(), new Double(123));
