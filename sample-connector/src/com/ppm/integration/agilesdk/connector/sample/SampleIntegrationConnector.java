@@ -53,11 +53,20 @@ public class SampleIntegrationConnector extends IntegrationConnector {
             });
     }
 
+    /**
+     * This method is deprecated since PPM 9.42 and has been replaced by #getIntegrationClasses(), but we need to keep it here for backward compatibility with PPM 9.41.
+     * @see IntegrationConnector#getIntegrations()
+     */
     @Override
     public List<FunctionIntegration> getIntegrations() {
         return Arrays.asList(new FunctionIntegration[]{
             new SampleWorkPlanIntegration(),
             new SampleTimeSheetIntegration()
         });
+    }
+
+    @Override
+    public List<String> getIntegrationClasses() {
+        return Arrays.asList(new String[] {"com.ppm.integration.agilesdk.connector.sample.SampleWorkPlanIntegration","com.ppm.integration.agilesdk.connector.sample.SampleTimeSheetIntegration", "com.ppm.integration.agilesdk.connector.sample.SampleKpiImportIntegration"});
     }
 }
