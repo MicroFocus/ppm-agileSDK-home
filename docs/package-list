@@ -1,4 +1,8 @@
 com.ppm.integration.agilesdk
+com.ppm.integration.agilesdk.agiledata
+com.ppm.integration.agilesdk.epic
+com.ppm.integration.agilesdk.kpi
+com.ppm.integration.agilesdk.model
 com.ppm.integration.agilesdk.pm
 com.ppm.integration.agilesdk.provider
 com.ppm.integration.agilesdk.tm
