@@ -3,6 +3,8 @@ package com.ppm.integration.agilesdk.connector.sample;
 import com.ppm.integration.agilesdk.FunctionIntegration;
 import com.ppm.integration.agilesdk.IntegrationConnector;
 import com.ppm.integration.agilesdk.IntegrationConnectorInstance;
+import com.ppm.integration.agilesdk.ValueSet;
+import com.ppm.integration.agilesdk.model.AgileProject;
 import com.ppm.integration.agilesdk.ui.*;
 
 import java.util.Arrays;
@@ -27,7 +29,20 @@ public class SampleIntegrationConnector extends IntegrationConnector {
 
     @Override
     public String getTargetApplicationIcon(){
-        return "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAApBJREFUeNqkUs9PE0EUftPdttvttqVVW6gEf4ClBpuKGmM8EI1GOTQSPfoXGOViohdvJt5JMHrxoIkXbwRU8GgkGMPBiJVGKEqElgplodt2d9vu7K4z25baM5N8+97Oe983b948ZJom7Gex1if2DgDZAGwM+UOdgFCCOOcJuht5GYJ5ME2SaP4FQyfGAJxM1AX+W8O8i7137nR3f6T3YEhwO920wHK5Ki/9yl/6+j07oqjaM5L3oa2CJjng4x7dSsQGDd0QNnN52GzFvJFjAW/v0UDX1Myib7egQFOkIWB28RwzOjJ8crAolQRJKsL7p7G20h6OpSErOoRrl/sGp6Z/jKoVfYFs52xW1NAT8VNd/cViSZBlBWhjx1+nLMzM5qyU6BEH0FhVVYVIb6CfcvYqMHV8IdwphKRCce/EyU+yRRiKixDkNyC9UoBUSgKGZcDn84coh6S9qF/BwN2MDXhd1wFjHaRiGRS1AmejHNy+7ofUqgITHxWwsU6gj65pmKecVg8MjDDGSK1ikEoVMAwEiGHh8Z0eK/zk1SawTmGvOgOxiHJaAjrOiDuqItcYgXG4gWkk3njwx7IO3t/WUK1SUyiH+o0m4vn1NXGL473g4DwWEBmsuZdnLFC/uU9REEt5ymkJ6HhyfXk1TWqT7ZwX7E4PsA6+Na7Ep3sUWAN5ez2zTDmtK5hGrqYq48nZWd/A0NWYy9PhZjkBroz+tsKeQ8ctq0i78tKXuSSuKONk7HPtk2ga00o+i769fXM/HI2fCPYNHPAFI646cUfdWlkUN34upLVadQxx3mlodArRoWEOPyfX0MBUC2BW5DAZjJskdpGgpyG/RvCZPM0E4twbyNVB+HbQs3frAvtZ/wQYAIlLIa+ciRrSAAAAAElFTkSuQmCC";
+        return "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABuElEQVQ4T2NkwAGKO7a4/2f63wCSZvzH2NBb4bMTm1JGXAYEFi/5JcHHxfDh92+GY3eeMzxcUcBGkgHu2fP/gzTsuvMMrO//zmqsloEFsTkXmwHY1IENwOZcj5x57v//M+7Ydec5w3/G/x4MO6p3YlMHNgDZNg8teQYNUeEz/1kZ8q4/eHFs951XDHkuelaMvxkmPf34yeTjl28o3sIwwElRgkFcgPuvCC8vw81nr5hBBmTaaP898egZw7Vn75jtFMQxDQA59x8DQ8PuW88Z+DjZe61khVzFBHhSP3z9xXjmyXsGSUGOv5cfv5prIC28m5+DrRik7j8TQwPIWxiB+J+Bcd//v8zRjz9+lDl8+xmzhawog4QA318udrYnjMx/lzIy/HdCThsYgXjy3nMmRibW//def7htJCmk+ejjDwYjKf7rvOxsqn8Z/zFK8PH8Q04bGGEAjvP/DHkMv35Pd9eW/w0KAzvL76xsb+QzGf8zTEJPG9gN2FnNCIrzK49f7wAZUOio7QFKytjSBtgA5ECEBQ4ozjlZGZmuv/nC8O7L93+gpIxNHc68QFJSxpZJKDYAm3OxWQQAPbIyIJK9CCoAAAAASUVORK5CYII=";
+    }
+
+    @Override
+    public List<AgileProject> getAgileProjects(ValueSet instanceConfigurationParameters) {
+        // These "Agile Projects" will be used for Agile Data integration & Portfolio Epics integration.
+        // They will be selectable in the "Advanced" tab of Integration Configuration page.
+        AgileProject ap1 = new AgileProject();
+        ap1.setDisplayName("My Sample Agile Project #1");
+        ap1.setValue("sap1");
+        AgileProject ap2 = new AgileProject();
+        ap2.setDisplayName("My Sample Agile Project #2");
+        ap2.setValue("sap2");
+        return Arrays.asList(new AgileProject[] {ap1, ap2});
     }
     
     @Override
@@ -44,7 +59,7 @@ public class SampleIntegrationConnector extends IntegrationConnector {
                 new LineBreaker(),
                 list,
                 new LineBreaker(),
-                new PlainText(SampleConstants.KEY_BASE_URL, "BASE_URL", "https://agilemanager-int.saas.hp.com", "",true),
+                new PlainText(SampleConstants.KEY_BASE_URL, "BASE_URL", "https://www.google.com", "",true),
                 new LineBreaker(),
                 new PlainText(SampleConstants.KEY_PROXY_HOST,"PROXY_HOST","","",false),
                 new PlainText(SampleConstants.KEY_PROXY_PORT,"PROXY_PORT","","",false),
@@ -67,6 +82,6 @@ public class SampleIntegrationConnector extends IntegrationConnector {
 
     @Override
     public List<String> getIntegrationClasses() {
-        return Arrays.asList(new String[] {"com.ppm.integration.agilesdk.connector.sample.SampleWorkPlanIntegration","com.ppm.integration.agilesdk.connector.sample.SampleTimeSheetIntegration", "com.ppm.integration.agilesdk.connector.sample.SampleKpiImportIntegration"});
+        return Arrays.asList(new String[] {"com.ppm.integration.agilesdk.connector.sample.SampleWorkPlanIntegration","com.ppm.integration.agilesdk.connector.sample.SampleTimeSheetIntegration", "com.ppm.integration.agilesdk.connector.sample.SampleAgileDataIntegration",  "com.ppm.integration.agilesdk.connector.sample.SamplePortfolioEpicIntegration", "com.ppm.integration.agilesdk.connector.sample.SampleKpiImportIntegration"});
     }
 }
