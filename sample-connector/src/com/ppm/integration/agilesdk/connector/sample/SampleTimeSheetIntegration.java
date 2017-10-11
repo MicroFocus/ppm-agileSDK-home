@@ -4,6 +4,7 @@ package com.ppm.integration.agilesdk.connector.sample;
 import java.util.*;
 
 import com.ppm.integration.agilesdk.*;
+import com.ppm.integration.agilesdk.pm.LinkedTaskAgileEntityInfo;
 import com.ppm.integration.agilesdk.tm.*;
 import com.ppm.integration.agilesdk.ui.*;
 
@@ -32,12 +33,28 @@ public class SampleTimeSheetIntegration extends TimeSheetIntegration {
     {
         final List<ExternalWorkItem> items = Collections.synchronizedList(
             new LinkedList<ExternalWorkItem>());
-        Date startDate=new Date(114,02,01);
-        Date finishDate=new Date(114,02,15);
+        Date startDate = context.currentTimeSheet().getPeriodStartDate().toGregorianCalendar().getTime();
+        Date finishDate = context.currentTimeSheet().getPeriodEndDate().toGregorianCalendar().getTime();
 
         items.add(new SampleExternalWorkItem("Meetings",45," Release error",startDate,finishDate));
         items.add(new SampleExternalWorkItem("other",15,"TimeSheet error",startDate,finishDate));
         return items;
+    }
+
+    @Override
+    public List<String> getBestTasksMatches(Map<String, LinkedTaskAgileEntityInfo> candidateTasksInfo, TimeSheetLineAgileEntityInfo timesheetLineAgileEntityInfo) {
+
+        List<String> matchingTaskIds = new ArrayList<>();
+
+        // We'll only return the tasks that are mapped to release 1, in no particular order.
+        for (Map.Entry<String, LinkedTaskAgileEntityInfo> entry : candidateTasksInfo.entrySet()) {
+            LinkedTaskAgileEntityInfo info = entry.getValue();
+            if (info != null && "releaseSample 1".equalsIgnoreCase(info.getReleaseId())) {
+                matchingTaskIds.add(entry.getKey());
+            }
+        }
+
+        return matchingTaskIds;
     }
 
 
@@ -91,6 +108,19 @@ public class SampleTimeSheetIntegration extends TimeSheetIntegration {
             }
 
             return effortBreakDown;
+        }
+
+        @Override
+        public TimeSheetLineAgileEntityInfo getLineAgileEntityInfo() {
+            // All timesheet lines will be mapped to the same artificial project.
+            TimeSheetLineAgileEntityInfo info = new TimeSheetLineAgileEntityInfo("sap1");
+            info.setReleaseId("release1");
+            info.setTeamId("team1");
+            info.setSprintId("sprint1");
+            info.setEpicId("epic1");
+            info.setFeatureId("feature1");
+            info.setBacklogItemId("bi1");
+            return info;
         }
 
         @Override

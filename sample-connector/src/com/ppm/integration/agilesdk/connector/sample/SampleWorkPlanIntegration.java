@@ -3,14 +3,12 @@ package com.ppm.integration.agilesdk.connector.sample;
 import java.lang.RuntimeException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 
 import com.ppm.integration.agilesdk.*;
 import com.ppm.integration.agilesdk.pm.*;
+import com.ppm.integration.agilesdk.tm.TimeSheetLineAgileEntityInfo;
 import com.ppm.integration.agilesdk.ui.*;
 
 
@@ -200,4 +198,14 @@ public class SampleWorkPlanIntegration extends WorkPlanIntegration{
         };
 
     }
+
+    public LinkedTaskAgileEntityInfo getAgileEntityInfoFromMappingConfiguration(ValueSet values) {
+        LinkedTaskAgileEntityInfo info = new LinkedTaskAgileEntityInfo();
+        // Project is always the token project "sap1".
+        info.setProjectId("sap1");
+        info.setReleaseId(values.get(SampleConstants.KEY_RELEASE));
+        return info;
+    }
+
+
 }
