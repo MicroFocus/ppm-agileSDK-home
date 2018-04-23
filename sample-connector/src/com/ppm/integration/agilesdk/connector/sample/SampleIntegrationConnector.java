@@ -14,7 +14,7 @@ public class SampleIntegrationConnector extends IntegrationConnector {
 
     @Override
     public String getExternalApplicationName(){
-        return "Sample Connector for imaginary external application";
+        return "Sample Connector for demo purposes";
     }
 
     @Override

@@ -21,7 +21,13 @@ public class SampleKpiImportIntegration extends KpiImportIntegration {
         Map<Long, Double> kpisToImport = new HashMap<Long, Double>();
 
         // You need the KPI IDs but you'll usually know a KPI by name. Use #getKpiByName() in order to retrieve the Kpi object and get the ID.
-        Kpi sampleKpi = Providers.getKpiProvider().getKpiByName("Sample KPI");
+        Kpi sampleKpi = null;
+
+        // For PPM 9.42, the method is #getKpiByName(), as all KPIs are shared.
+        // sampleKpi = Providers.getKpiProvider().getKpiByName("Sample KPI");
+
+        // For PPM 9.50+, the method is #getSharedKpiByName().
+        // sampleKpi = Providers.getKpiProvider().getSharedKpiByName("Sample KPI");
 
         if (sampleKpi != null) {
             kpisToImport.put(sampleKpi.getId(), new Double(123));
