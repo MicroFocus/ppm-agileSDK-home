@@ -82,6 +82,11 @@ public class SampleIntegrationConnector extends IntegrationConnector {
 
     @Override
     public List<String> getIntegrationClasses() {
-        return Arrays.asList(new String[] {"com.ppm.integration.agilesdk.connector.sample.SampleWorkPlanIntegration","com.ppm.integration.agilesdk.connector.sample.SampleTimeSheetIntegration", "com.ppm.integration.agilesdk.connector.sample.SampleAgileDataIntegration",  "com.ppm.integration.agilesdk.connector.sample.SamplePortfolioEpicIntegration", "com.ppm.integration.agilesdk.connector.sample.SampleKpiImportIntegration"});
+        return Arrays.asList(new String[] {"com.ppm.integration.agilesdk.connector.sample.SampleWorkPlanIntegration",
+                "com.ppm.integration.agilesdk.connector.sample.SampleTimeSheetIntegration",
+                "com.ppm.integration.agilesdk.connector.sample.SampleAgileDataIntegration",
+                "com.ppm.integration.agilesdk.connector.sample.SamplePortfolioEpicIntegration",
+                "com.ppm.integration.agilesdk.connector.sample.SampleKpiImportIntegration",
+                "com.ppm.integration.agilesdk.connector.sample.SampleRequestIntegration"});
     }
 }

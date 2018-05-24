@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * This class provides {@link AgileDataIntegration} features to import Agile entities into the PPM DB to be later shown in the Agile Portlets of the PPM Dashboard.
- * All the data returned here is fake and for educational purposes only; in a real connector, you would retrieve all the infromation from the Agile tools, for example through a REST API.
+ * All the data returned here is fake and for educational purposes only; in a real connector, you would retrieve all the information from the Agile tools, for example through a REST API.
  */
 public class SampleAgileDataIntegration extends AgileDataIntegration {
 

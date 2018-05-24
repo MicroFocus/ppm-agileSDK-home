@@ -127,7 +127,8 @@ public class SampleTimeSheetIntegration extends TimeSheetIntegration {
         public String getErrorMessage() {
             return errorMessage;
         }
-        public int getDaysDiffNumber(Date startDate, Date endDate) {
+
+        private int getDaysDiffNumber(Date startDate, Date endDate) {
             Calendar start = new GregorianCalendar();
             start.setTime(startDate);
 
