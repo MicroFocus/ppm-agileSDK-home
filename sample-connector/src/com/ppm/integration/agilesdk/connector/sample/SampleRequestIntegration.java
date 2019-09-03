@@ -1,7 +1,9 @@
 package com.ppm.integration.agilesdk.connector.sample;
 
+import com.hp.ppm.integration.model.AgileEntityFieldValue;
 import com.ppm.integration.agilesdk.ValueSet;
 import com.ppm.integration.agilesdk.dm.*;
+import com.ppm.integration.agilesdk.dm.DataField.DATA_TYPE;
 import com.ppm.integration.agilesdk.dm.User;
 import com.ppm.integration.agilesdk.model.AgileEntity;
 import com.ppm.integration.agilesdk.model.AgileEntityFieldInfo;
@@ -43,11 +45,12 @@ public class SampleRequestIntegration extends RequestIntegration {
 
         return entitiesInfo;
     }
+    
 
     @Override public List<AgileEntityFieldInfo> getAgileEntityFieldsInfo(String agileProjectValue, String entityType,
             ValueSet instanceConfigurationParameters)
     {
-        // For any entity, we'll expose fields name (text), story points (number), and assignee (User).
+        // For any entity, we'll expose fields name (string), story points (integer), assignee (User), and priority (ListNode).
 
         // The result of this method is used to list fields that can be mapped for each entity in the Configuration UI.
 
@@ -59,22 +62,59 @@ public class SampleRequestIntegration extends RequestIntegration {
         nameField.setLabel("Name");
         nameField.setListType(false);
         nameField.setId("NAME_FIELD");
-        nameField.setFieldType("Text");
+        nameField.setFieldType(DATA_TYPE.STRING.name());
         fields.add(nameField);
 
         AgileEntityFieldInfo storyPointsField = new AgileEntityFieldInfo();
         storyPointsField.setLabel("Story Points");
         storyPointsField.setListType(false);
         storyPointsField.setId("STORY_POINTS_FIELD");
-        storyPointsField.setFieldType("Number");
+        storyPointsField.setFieldType(DATA_TYPE.INTEGER.name());
         fields.add(storyPointsField);
 
         AgileEntityFieldInfo assigneeField = new AgileEntityFieldInfo();
         assigneeField.setLabel("Assignee");
         assigneeField.setListType(false);
         assigneeField.setId("ASSIGNEE_FIELD");
-        assigneeField.setFieldType("User");
+        assigneeField.setFieldType(DATA_TYPE.USER.name());
         fields.add(assigneeField);
+        
+        AgileEntityFieldInfo priority = new AgileEntityFieldInfo();
+        priority.setLabel("Priority");
+        priority.setListType(true);
+        priority.setId("PRIORITY");
+        priority.setFieldType(DATA_TYPE.ListNode.name());
+        fields.add(priority);
+
+        return fields;
+    }
+    
+    @Override
+    public List<AgileEntityFieldValue> getAgileEntityFieldsValueList(final String agileProjectValue,
+            final String entityType,
+            final ValueSet instanceConfigurationParameters, final String fieldName, final boolean isLogicalName)
+    {
+
+        // The result of this method is used to list values of a list-type field that can be mapped with a PPM drop-down list field in the Configuration UI.
+
+        // The "fieldName" is just a text to specify which list-type field's values user want to get
+        // the sample code gives an example of field "priority".
+
+        List<AgileEntityFieldValue> fields = new ArrayList<AgileEntityFieldValue>();
+        AgileEntityFieldValue high = new AgileEntityFieldValue();
+        high.setId("high");
+        high.setName("High");
+        fields.add(high);
+        
+        AgileEntityFieldValue normal = new AgileEntityFieldValue();
+        normal.setId("normal");
+        normal.setName("Normal");
+        fields.add(normal);
+        
+        AgileEntityFieldValue low = new AgileEntityFieldValue();
+        low.setId("low");
+        low.setName("Low");
+        fields.add(low);
 
         return fields;
     }
@@ -104,6 +144,7 @@ public class SampleRequestIntegration extends RequestIntegration {
 
         return getDummyEntity();
     }
+    
 
     @Override public List<AgileEntity> getEntities(String agileProjectValue, String entityType,
             ValueSet instanceConfigurationParameters, Set<String> entityIds, Date lastUpdateTime)
@@ -137,6 +178,14 @@ public class SampleRequestIntegration extends RequestIntegration {
         StringField storyPointsValue = new StringField();
         storyPointsValue.set("13");
         dummyEntity.addField("STORY_POINTS_FIELD", storyPointsValue);
+        
+        ListNode listNode = new ListNode();                            
+        listNode.setId("low");
+        listNode.setName("Low");                            
+        
+        ListNodeField listNodeField = new ListNodeField();
+        listNodeField.set(listNode);        
+        dummyEntity.addField("PRIORITY", listNodeField);
 
         UserField assigneeValue = new UserField();
         // We're setting the User info manually to Admin User since we know it's a PPM user that should exist;
