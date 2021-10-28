@@ -6,3 +6,4 @@ Home of the PPM Agile SDK - [Documentation](https://github.com/MicroFocus/ppm-ag
 - [PPM Agile SDK connector for Atlassian Jira Cloud](https://github.com/MicroFocus/ppm-jira-cloud-connector)
 - [PPM Agile SDK connector for Rally / CA Agile Central](https://github.com/MicroFocus/ppm-rally-connector)
 - [PPM Agile SDK connector for VersionOne](https://github.com/MicroFocus/ppm-versionone-connector)
+- [PPM Agile SDK connector for Notion (Beta)](https://github.com/MicroFocus/ppm-notion-connector)
